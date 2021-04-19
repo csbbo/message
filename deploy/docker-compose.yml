@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:4.2.9
+    container_name: mg_mongo
+    restart: always
+    volumes:
+      - "./db_data/mongo:/data/db"
+      # - "./data/mongo-entrypoint:/docker-entrypoint-initdb.d"
+  redis:
+    image: redis:6.0-alpine
+    container_name: mg_redis
+    restart: always
+  server:
+    image: mg_server:latest
+    container_name: mg_server
+    restart: always
+    depends_on:
+      - mongodb
+      - redis
+  nginx:
+    image: mg_nginx:latest
+    container_name: mg_nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - mongodb
+      - redis
+      - server

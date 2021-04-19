@@ -26,7 +26,7 @@ INSTALLED_APPS = [
 HTTP_LISTEN = '0.0.0.0'
 HTTP_PORT = int(os.getenv('HTTP_PORT', '7070'))
 MONGODB_ADDR = os.getenv('MONGODB_ADDR', 'mongodb://127.0.0.1:27017/guest_book')
-REDIS_ADDR = 'redis://127.0.0.1:6379/0'
+REDIS_ADDR = os.getenv('REDIS_ADDR', 'redis://127.0.0.1:6379/0')
 HASH_SALT = '94af841d6732b7bf1354aa753a9bd4faa'
 MIDDLEWARES = [
     middleware_handle_error,
