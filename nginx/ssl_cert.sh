@@ -1,4 +1,4 @@
 #! /bin/bash
 
-certbot --nginx -d rainbow.shaobo.fun
+certbot --nginx -d shaobo.fun
 #certbot renew
