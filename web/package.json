@@ -14,6 +14,7 @@
     "js-cookie": "^2.2.1",
     "vue": "^2.6.11",
     "vue-router": "^3.5.1",
+    "vue-socket.io": "^3.0.10",
     "vuex": "^3.6.2",
     "wangeditor": "^4.6.15"
   },
@@ -28,6 +29,7 @@
     "less-loader": "^4.1.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^7.3.1",
+    "socket.io-client": "^4.0.1",
     "tiptap": "^1.32.2",
     "tiptap-extensions": "^1.35.2",
     "vue-template-compiler": "^2.6.11",

@@ -12,7 +12,7 @@
 
 <script>
 import { AddComment, QueryComment } from "@/common/api"
-import bus from "@/common/event_bus"
+import io from 'socket.io-client'
 export default {
     name: 'Conversation',
     data() {
@@ -21,6 +21,7 @@ export default {
               content: '',
             },
             comments: [],
+            socket : io('localhost:7070')
         }
     },
     props: ['mid'],
@@ -46,10 +47,12 @@ export default {
     },
     created () {
         this.getComments()
-        bus.$on('room1', this.UPDATE)
+        this.sockets.subscribe('room1', (data) => {
+          console.log('yes')
+          console.log(data)
+        })
     },
     beforeDestroy () {
-        bus.$off('room1', this.UPDATE)
     }
 }
 </script>
