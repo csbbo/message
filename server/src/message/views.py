@@ -78,7 +78,7 @@ class MessageListAPI(APIView):
 
 
 class CommentAPI(APIView):
-    @check(validate=comment_post_validator)
+    @check(login_required=False, validate=comment_post_validator)
     async def post(self):
         data = self.request_data
         message = await self.db.messages.find_one({'_id': bson.ObjectId(data['mid'])})

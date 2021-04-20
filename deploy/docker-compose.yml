@@ -15,6 +15,10 @@ services:
     image: mg_server:latest
     container_name: mg_server
     restart: always
+    environment:
+      - HTTP_PORT
+      - MONGODB_ADDR
+      - REDIS_ADDR
     depends_on:
       - mongodb
       - redis
