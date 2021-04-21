@@ -30,7 +30,6 @@ export default {
             AddComment({mid: this.mid, content: this.form.content}).then(resp => {
                 if (resp.err === null) {
                     this.form.content = ''
-                    this.getComments()
                 }
             })
         },
@@ -47,13 +46,14 @@ export default {
     },
     created () {
         this.getComments()
-        this.sockets.subscribe('room1', (data) => {
-          console.log('yes')
-          console.log(data)
+        this.sockets.subscribe('conversation', (mid) => {
+          if(mid === this.mid) {
+            this.getComments()
+          }
         })
     },
     beforeDestroy () {
-        this.sockets.unsubscribe('room1')
+        this.sockets.unsubscribe('conversation')
     }
 }
 </script>

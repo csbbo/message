@@ -5,7 +5,7 @@ import pymongo
 
 from message.validate import *
 from utils.filters import objectid_validator
-from utils.http import APIView, check, get_login_user, jsondumps
+from utils.http import APIView, check, get_login_user
 from utils.shortcuts import utcnow
 
 logger = logging.getLogger(__name__)
@@ -99,7 +99,7 @@ class CommentAPI(APIView):
         except Exception as e:
             logger.exception(e)
             return self.error(self.i18n.server_error)
-        await self.sio.emit('room1', jsondumps({'comment': data['content']}))
+        await self.sio.emit('conversation', data['mid'])
         return self.success({'id': str(insert_result.inserted_id)})
 
     async def get(self):
