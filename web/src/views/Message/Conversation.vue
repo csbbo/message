@@ -53,6 +53,7 @@ export default {
         })
     },
     beforeDestroy () {
+        this.sockets.unsubscribe('room1')
     }
 }
 </script>
